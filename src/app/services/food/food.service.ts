@@ -1,11 +1,37 @@
 import { Injectable } from '@angular/core';
 import { food } from 'src/app/shared/food';
+import { Tag } from 'src/app/shared/models/Tags';
 @Injectable({
   providedIn: 'root'
 })
 export class FoodService {
 
   constructor() { }
+
+  getAllTags():Tag[]{
+    return[
+      {name:'All',count: 14},
+      {name:'FastFood',count: 4},
+      {name:'Pizza',count: 2},
+      {name:'Lunch',count: 3},
+      {name:'SlowFood',count: 2},
+      {name:'Hamburger',count: 1},
+      {name:'Fry',count: 1},
+      {name:'Soup',count: 1}
+    ]
+  }
+
+  getAllFoodsByTag(tag:string):food[]{
+  
+    return tag=="All" ?
+    this.getAll() :
+    this.getAll().filter(food=>food.tags?.includes(tag));
+  }
+
+  getAllFoodsBySearchTerm(searchTerm:string):food[]{
+    return this.getAll().filter(food=>
+      food.name.toLowerCase().includes(searchTerm.toLowerCase()));
+  }
 
   getAll():food[]{
     return[
@@ -17,7 +43,7 @@ export class FoodService {
         favorite:false,
         origins:['italy'],
         stars:4.5,
-        imageUrl:'/assets/images/images (1).jpeg',
+        imageUrl:'/assets/images/food-1.jpg',
         tags:['Fastfood','Pizza','Lunch']
       },
       {
@@ -28,7 +54,7 @@ export class FoodService {
         favorite:true,
         origins:['china','miidle east','persia'],
         stars:4.7,
-        imageUrl:'/assets/images/images (2).jpeg',
+        imageUrl:'/assets/images/food-2.jpg',
         tags:['Slowfood','Lunch']
       },
       {
@@ -39,7 +65,7 @@ export class FoodService {
         favorite:false,
         origins:['germany','us'],
         stars:3.5,
-        imageUrl:'/assets/images/images (3).jpeg',
+        imageUrl:'/assets/images/food-3.jpg',
         tags:['Fastfood','Hamburger']
       },
       {
@@ -50,7 +76,7 @@ export class FoodService {
         favorite:true,
         origins:['Belgium','france'],
         stars:3.3,
-        imageUrl:'/assets/images/images (4).jpeg',
+        imageUrl:'/assets/images/food-4.jpg',
         tags:['Fastfood','Fry']
       },
       {
@@ -61,7 +87,7 @@ export class FoodService {
         favorite:false,
         origins:['indian','asia'],
         stars:3.0,
-        imageUrl:'/assets/images/images (5).jpeg',
+        imageUrl:'/assets/images/food-5.jpg',
         tags:['Slowfood','Soup']
       },
       {
@@ -72,7 +98,7 @@ export class FoodService {
         favorite:false,
         origins:['italy'],
         stars:4.0,
-        imageUrl:'/assets/images/images (6).jpeg',
+        imageUrl:'/assets/images/food-6.jpg',
         tags:['Fastfood','Pizza','Lunch']
       }
     ]
