@@ -9,13 +9,19 @@ import { SearchComponent } from './search/search.component';
 
 import { FormsModule } from '@angular/forms';
 import { TagsComponent } from './tags/tags.component';
+import { FoodpageComponent } from './foodpage/foodpage.component';
+import { CartPageComponent } from './cart-page/cart-page.component';
+import { NotFoundComponent } from './not-found/not-found.component';
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     HomeComponent,
     SearchComponent,
-    TagsComponent
+    TagsComponent,
+    FoodpageComponent,
+    CartPageComponent,
+    NotFoundComponent
   ],
   imports: [
     BrowserModule,

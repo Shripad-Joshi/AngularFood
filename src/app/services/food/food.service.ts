@@ -21,6 +21,10 @@ export class FoodService {
     ]
   }
 
+  getFoodById(id: number):food{
+      return this.getAll().find(food=> food.id==id)!;
+  }
+
   getAllFoodsByTag(tag:string):food[]{
   
     return tag=="All" ?
